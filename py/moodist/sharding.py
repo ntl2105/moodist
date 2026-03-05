@@ -10,7 +10,7 @@ tensor's placement strategy.
 
 from dataclasses import dataclass
 from itertools import product
-from typing import List, Tuple
+from typing import List
 
 from torch.distributed.tensor.placement_types import Shard, Replicate
 
@@ -271,7 +271,7 @@ def compute_local_reshard(
         return None
 
     for curr, tgt, idx_size in zip(current_placements, target_placements, indices_and_sizes):
-        if type(curr) == type(tgt):
+        if type(curr) is type(tgt):
             # Same type - must be identical
             if is_shard_like(curr) and get_shard_key(curr) != get_shard_key(tgt):
                 raise ValueError(

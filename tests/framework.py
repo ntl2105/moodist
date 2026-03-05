@@ -18,7 +18,6 @@ Usage:
 """
 
 import os
-import sys
 import time
 import traceback
 from dataclasses import dataclass, field
@@ -26,6 +25,7 @@ from datetime import timedelta
 from typing import Callable, Optional
 
 import torch
+
 
 
 @dataclass
@@ -410,7 +410,6 @@ def create_process_group(ctx: TestContext, fresh: bool = False, **options):
     """
     global _cached_pg, _cached_pg_store
     from datetime import timedelta
-    import torch
     import moodist
 
     if fresh or _cached_pg is None:
